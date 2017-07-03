@@ -1,13 +1,16 @@
 # script to split massive JSON object into useful CSV files for neo4j
 import argparse
 from collections import Counter
+from datetime import datetime
 from itertools import groupby
 import json
 import nltk
 from operator import itemgetter
 import pandas as pd
-from string import punctuation
+from string import punctuation, printable
 from termcolor import colored
+import time
+import unicodedata
 
 from common import *
 
@@ -84,7 +87,11 @@ for i, p in enumerate(pubs):
         keyword_counter = Counter()
         for c in comments_dict[p['source_pub_id']]:
             # count the keywords
-            spl = c['comment'].split()
+            comment_clean = ''.join([
+                c
+                for c in c['comment'] \
+                if c not in punctuation and c in printable])
+            spl = comment_clean.split()
             keyword_counter.update(
                 w.lower().rstrip(punctuation)
                 for w in spl \
@@ -92,11 +99,16 @@ for i, p in enumerate(pubs):
                         and w not in punctuation
 
             )
-        pubs[i]['keywords'] = keyword_counter.most_common(15)
+        pubs[i]['keywords'] = cypher_collection_syntax([
+            '{0}: {1}'.format(x[0], x[1]) for x in keyword_counter.most_common(15)
+        ])
     else:
-        pubs[i]['keywords'] = []
+        pubs[i]['keywords'] = None
     # tidy up features
-    pubs[i]['facilities'] = [f[0:f.index('(')].strip() if '(' in f else f for f in p['facilities']]
+    pubs[i]['facilities'] = cypher_collection_syntax(
+        [f[0:f.index('(')].strip() if '(' in f else f for f in p['facilities']]
+    )
+    pubs[i]['nearby_tube_stations'] = cypher_collection_syntax([x['name'] for x in p['nearby_tube_stations']])
 print(
     'Postcode search finished:',
     colored('found {0:,d}'.format(found_pc_count)),
@@ -124,7 +136,23 @@ with BulkPostCodeParser([ p['postcode'] for p in pubs if p['postcode'] is not No
     else:
         pass
 
-# 6. PREPARE TO OUTPUT THE FILES
+# 6. PARSE COMMENT DATES NICELY
+print(colored('Processing and sorting comment dates.', 'yellow'))
+for i, c in enumerate(comments):
+    try:
+        c['created_timestamp'] = int(time.mktime(datetime.strptime(c['created'], '%Y-%m-%d %H:%M:%S').timetuple()))
+    except KeyError:
+        pass
+        #print(colored('DEBUG: no created found', 'cyan'), c)
+        c['created_timestamp'] = 0
+    except ValueError:
+        print(colored('could not parse date:', 'red'), c['created'])
+        c['created_timestamp'] = 0
+
+comments.sort(key = itemgetter('created_timestamp'), reverse = False)
+print(colored('Comment dates processed and sorted OK.', 'green'))
+
+# 7. PREPARE TO OUTPUT THE FILES
 # work out the filenames to output
 print(colored('Finding safe output filenames', 'yellow'))
 file_int = 0
@@ -137,18 +165,18 @@ print(colored('Found filenames OK:', 'green'),
     colored(pubs_fn, 'cyan'),
     colored(comments_fn, 'cyan'))
 
-# 7. SAVE OUTPUT
+# 8. SAVE OUTPUT
 
 # export files
 print(colored('Exporting split files.', 'yellow'))
 df_pubs = pd.DataFrame(pubs)
-df_pubs.to_csv(pubs_fn)
+df_pubs.to_csv(pubs_fn, index_label = 'import_offset')
 print(
     colored('Exported pubs OK:', 'green'),
     colored(pubs_fn, 'cyan'),
     to_kb(Path(pubs_fn).stat().st_size))
 df_comments = pd.DataFrame(comments)
-df_comments.to_csv(comments_fn)
+df_comments.to_csv(comments_fn, index_label = 'import_offset')
 print(
     colored('Exported comments OK:', 'green'),
     colored(comments_fn, 'cyan'),

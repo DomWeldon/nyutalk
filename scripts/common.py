@@ -11,6 +11,11 @@ except ImportError:
 from termcolor import colored
 
 # NATURAL LANGUAGE PROCESSING
+def cypher_collection_syntax(l):
+    return ';'.join([x for x in l])
+
+def cypher_mapping_syntax(m):
+    return ';'.join(['{0}: {1}'.format(k, v) for k, v in m.items()])
 
 # POSTCODE FUNCTIONS
 def get_postcode_matcher():
