@@ -75,10 +75,20 @@ You can also query to find useful data, for example, let's look at some possible
     // likewise, pubs
     MATCH (n) WHERE n.fclass = "pub" SET n:Pub RETURN n
 
-You can now set pubs and railway station labels to have specific colours and sizes in the browser, [like the results of the query below](images/pubs_and_stations_near_kcl.png).
+You can now set pubs and railway station labels to have specific colours and sizes in the browser, [like the results of the query below](images/pubs_and_stations_near_KCL.png).
 
     CALL spatial.withinDistance('transport', { lon: -0.12300605702061, lat: 51.5149124137111 }, 1) YIELD node
     WITH node as r WHERE r:RailwayStation
     CALL spatial.withinDistance('pois', { lon: -0.12300605702061, lat: 51.5149124137111 }, 1) YIELD node
     WITH r, node AS p WHERE p:Pub
     RETURN *
+
+## Setup Python Environment
+
+Assuming you have python3 installed with pip3, create a `virtualenv` to install your dependencies into and run commands in. Use the code below to create virtualenv called `london_pubs` in the current directory:
+
+    virtualenv -p python3 london_pubs
+
+Now install the dependencies:
+
+    pip3 install -r requirements.txt
