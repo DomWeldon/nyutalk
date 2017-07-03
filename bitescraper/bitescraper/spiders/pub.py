@@ -98,7 +98,7 @@ class PubSpider(scrapy.Spider):
 
         try:
             # yes
-            comments_url = response.xpath('//a[contains(@href, "/pubs/comments.shtml")]/@href').extract()[0]
+            comments_url = '/pubs/comments.shtml/' + str(pub['source_pub_id'])
             yield scrapy.Request(self.base_url + comments_url, callback = self.parseComments)
         except IndexError:
             # no
@@ -111,7 +111,7 @@ class PubSpider(scrapy.Spider):
             # loop through and turn into comments
 
             comment = CommentItem()
-            comment['source_pub_id'] = int(response.url.split('/')[-2])
+            comment['source_pub_id'] = int(response.url.split('/')[-1])
             comment['source_comment_id'] = int(cr.xpath('div/small/a[text()="Report this for removal"]/@href').extract()[0].split('=')[-1])
             comment['comment'] =  ' '.join(cr.xpath('text()').extract()).strip()
             try:
