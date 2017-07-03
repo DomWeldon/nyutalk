@@ -1,3 +1,5 @@
 scrapy
 pandas
 termcolor
+nltk
+requests
