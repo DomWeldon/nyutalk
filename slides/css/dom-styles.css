@@ -1,0 +1,16 @@
+section span.dom-black-block {
+  background-color: #333333;
+  padding: 10px 15px 10px 15px !important;
+}
+
+.reveal table {
+  color: #ffffff;
+}
+
+.reveal table th, .reveal table td {
+  border-bottom: 1px solid #ffffff;
+}
+
+.reveal table tbody tr:last-child td {
+    border-bottom: none;
+}

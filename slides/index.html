@@ -1,0 +1,561 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="vendor/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="vendor/reveal.js/css/theme/night.css">
+        <link rel="stylesheet" href="css/dom-styles.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+              <section>
+                <h3>
+                  Linking Place and Non-Place Data: Opportunities Graph Databases in the Digital Humanities
+                </h3>
+                <h4>
+                  Dom Weldon
+                </h4>
+                <h4>
+                  dominic.weldon@kcl.ac.uk
+                </h4>
+              </section>
+              <section
+                data-background-image="img/database_geek.jpg" data-background-size="contain">
+                <h3>
+                  <span class="fragment dom-black-block" data-fragment-index="1">
+                    Not Just Databases!
+                  </span>
+                </h3>
+              </section>
+              <section>
+                <h4>
+                  Topics:
+                </h4>
+                <ul>
+                  <li class="fragment" data-fragment-index="1">
+                    Digital Humanities: History of Linking Data
+                  </li>
+                  <li class="fragment" data-fragment-index="2">
+                    Graph Databases - what are and why?
+                  </li>
+                  <li class="fragment" data-fragment-index="3">
+                    Examples for using Graphs DBs in your research
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <h1>
+                  <span class="fragment highlight-blue">Digital</span>
+                  Humanities
+                </h1>
+              </section>
+              <section>
+                <div class="paragraph">
+                  <p>
+                    <span class="image">
+                      <img src="img/processor.jpg" width="280" style="margin-right: 50px;">
+                    </span>
+                    <span class="image">
+                      <img src="img/self_driving_car.jpg" width="280" style="margin-left: 50px;">
+                    </span>
+                  </p>
+                  <p class="fragment">
+                    Quite a lot happens in between!
+                  </p>
+                </div>
+              </section>
+              <section>
+                <h3 class="fragment">
+                  Modeling real world events and information about human activity with digital methods is what DH is all about.
+                </h3>
+              </section>
+              <section
+                data-background-image="img/medici.png"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section>
+                <h2 class="fragment" data-fragment-index="1">
+                  The History of Digital Humanities
+                </h2>
+                <p class="fragment" data-fragment-index="2">
+                  I argue that three phases are observable in the history of Digital Humanities.
+                </p>
+                <p class="fragment" data-fragment-index="3">
+                  These phases have followed the technologies available to humanists to link together data
+                </p>
+              </section>
+              <section>
+                <h2>
+                  Earliest Computers
+                </h2>
+                <p class="fragment" data-fragment-index="1">
+                  Personal computer use is born out of the desire to link together data.
+                </p>
+              </section>
+              <section
+                data-background-image="img/as-we-may-think.png"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section
+                data-background-image="img/bush-important.png"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section
+                data-background-image="img/memex-in-use.png"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section
+                data-background-image="img/memex-cross-section.png"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section>
+                <h2>
+                  I. Quantiative Computation
+                </h2>
+              </section>
+              <section
+                data-background-image="img/busa-1.jpg"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section
+                data-background-image="img/busa-2.jpg"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section>
+                <h2>
+                  I. Quantiative Computation: Early Studies
+                </h2>
+                <ul>
+                  <li class="fragment" data-fragment-index="1">
+                    1954: William Aydelotte: voting records of historical parliamentarians
+                  </li>
+                  <li class="fragment" data-fragment-index="2">
+                    1949: Harriet and Frank Owsley - <span class="fragment highlight-current-blue" data-fragment-index="3"><em>Plain Folk of the Old South</em></span>: linking together census records
+                  </li>
+                  <li class="fragment" data-fragment-index="4">
+                    1974: Fogel and Engerman - <span class="fragment highlight-current-blue" data-fragment-index="5"><em>Time on the Cross</em></span>: linking different quantitative historical records, taken to the extreme - very controversial at the time
+                  </li>
+                </ul>
+                <p class="fragment" data-fragment-index="6">
+                  Using computers to <span class="fragment highlight-current-red" data-fragment-index="7">link together data</span> in novel ways.
+                </p>
+              </section>
+              <section
+                data-background-image="img/tbl.jpg"
+                data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section>
+                <h2>
+                  II. The WWW
+                </h2>
+              </section>
+              <section
+                data-background-image="img/information-management.png"
+                data-background-size="contain">
+                <h3 class="fragment">
+                  <span class="dom-black-block">
+                    <a href="https://www.w3.org/History/1989/proposal.html" target="_blank">
+                      Read at CERN
+                    </a>
+                  </span>
+                </h3>
+              </section>
+              <section>
+                <blockquote cite="https://www.w3.org/History/1989/proposal.html">
+                  The method of storage must not place its own restraints on the information... This is why a 'web' of notes with links (like references) between them is far more useful than a fixed hierarchical system.
+                </blockquote>
+              </section>
+              <section>
+                <blockquote cite="https://www.w3.org/History/1989/proposal.html">
+                  When describing a complex system, many people resort to diagrams with circles and arrows. Circles and arrows leave one free to describe the interrelationships between things in a way that tables, for example, do not. The system we need is like a diagram of circles and arrows, <span class="fragment highlight-current-blue">where circles and arrows can stand for anything</span>.
+                </blockquote>
+              </section>
+              <section data-background-iframe="http://valley.lib.virginia.edu/">
+                <h3>
+                  <span class="fragment dom-black-block">
+                    <a href="http://valley.lib.virginia.edu/">
+                      Valley of the Shadow
+                    </a>
+                  </span>
+                </h3>
+              </section>
+              <section data-background-iframe="https://www.oldbaileyonline.org/">
+                <h3>
+                  <span class="fragment dom-black-block">
+                    <a href="https://www.oldbaileyonline.org/">
+                      Old Bailey Online
+                    </a>
+                  </span>
+                </h3>
+              </section>
+
+              <section>
+                <h2>
+                  III. Knowledge Discovery in Databases
+                </h2>
+              </section>
+
+              <section data-background-image="img/authorial-london.png" data-background-size="contain">
+                <h3>
+                  <span class="fragment dom-black-block">
+                    <a href="https://authorial.stanford.edu/">
+                      Authorial London
+                    </a>
+                  </span>
+                </h3>
+              </section>
+
+              <section>
+                <h3>
+                  Three Phases:
+                </h3>
+                <ul>
+                  <li>
+                    Quantitative Computation
+                  </li>
+                  <li>
+                    The WWW
+                  </li>
+                  <li>
+                    Knowledge Discovery in Databases
+                  </li>
+                </ul>
+              </section>
+
+              <section data-background-image="img/engelbart.png" data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+
+              <section>
+                <p>
+                  The development of abstract thoughts through continual, iterative close collaboration with computers through a visual interface which he called: <span class="fragment highlight-current-blue">automated external symbol manipulation</span>.
+                </p>
+              </section>
+              <section data-background-image="img/engelbart.png" data-background-size="contain">
+                <h4>
+                  <span class="fragment dom-black-block">
+                    &quot;concepts that we have never yet imagined&quot;
+                  </span>
+                </h4>
+              </section>
+              <section>
+                <h1>
+                  Databases!
+                </h1>
+              </section>
+              <section>
+                <p>
+                   When we think of databases generally, you will almost immediately be told about <span class="fragment highlight-current-blue">relational databases</span>, like MySQL, PostgreSQL or SQL Server.
+                </p>
+              </section>
+              <section data-background-image="img/relationship.jpg" data-background-size="contain">
+                <h3>
+                  <span class="fragment dom-black-block" data-fragment-index="1">
+                    RELATIONAL DATABASES ARE <span class="fragment highlight-current-red">TERRIBLE</span> AT MODELING RELATIONSHIPS!
+                  </span>
+                </h3>
+              </section>
+              <section>
+                <h3>
+                  Let's model this room...
+                </h3>
+                <p>
+                  Circles and arrows v. relational database
+                </p>
+              </section>
+              <section data-background-image="img/graph_1.jpg" data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section data-background-image="img/relational_mess.jpg" data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section data-background-image="img/graph_2.jpg" data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section>
+                <h3>
+                  Graphs databases are whiteboard friendly.
+                </h3>
+              </section>
+              <section data-background-image="img/talk_talk_query.png" data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section data-background-image="img/talk_graph.png" data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+              <section>
+                <h1>
+                  Neo4J
+                </h1>
+              </section>
+              <section>
+                <h2>
+                  Proven very useful as a tool in investigative journalism
+                </h2>
+                <ul>
+                  <li>
+                    <a href="https://neo4j.com/blog/icij-neo4j-unravel-panama-papers/" target="_blank">ICIJ and the Panama Papers</a>
+                  </li>
+                  <li>
+                    <a href="https://neo4j.com/blog/buzzfeed-trumpworld-dataset-neo4j/" target="_blank">Donald Trump Business Deals</a>
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <h2>
+                  How Might Graph Databases Aid Your Research?
+                </h2>
+                <p>
+                  A geographical example...
+                </p>
+              </section>
+              <section>
+                <h3 class="fragment">
+                  Where are we?
+                </h3>
+              </section>
+              <section>
+                <ul>
+                  <li class="fragment" data-fragment-index="1">
+                    London
+                  </li>
+                  <li class="fragment" data-fragment-index="2">
+                    Anatomy Museum Lecture Theatre, 6th Floor Strand Building, Strand Campus, King's College London, Strand, London WC2R 2LS
+                  </li>
+                  <li class="fragment" data-fragment-index="3">
+                    51&deg;30'41.2"N 0&deg;06'57.5"W
+                  </li>
+                  <li class="fragment" data-fragment-index="4">
+                    Westminster
+                  </li>
+                  <li class="fragment" data-fragment-index="5">
+                    The UK
+                  </li>
+                  <li class="fragment" data-fragment-index="6">
+                    About 40m above sea-level
+                  </li>
+                </ul>
+              </section>
+              <section>
+                <section data-background-image="img/ljr.jpg" data-background-size="contain">
+                  <h1>
+                    <span class="fragment dom-black-block">London Pubs</span>
+                  </h1>
+                </section>
+                <section>
+                  <h3>
+                    Two sources of volunteered geographical information:
+                  </h3>
+                  <ul>
+                    <li>
+                      <a href="https://www.openstreetmap.org/">
+                        Open Street Map
+                      </a>
+                      - location of pubs
+                    </li>
+                    <li>
+                      <a href="hhttp://www.beerintheevening.com/">
+                        Beer in the Evening
+                      </a>
+                      - information about facilities, user community, reviews
+                    </li>
+                  </ul>
+                </section>
+                <section>
+                  <h3 class="fragment" data-fragment-index="1">
+                    Can we use graph databases to link them together?
+                  </h3>
+                  <h3 class="fragment" data-fragment-index="2">
+                    What can we learn?
+                  </h3>
+                </section>
+                <section>
+                  <p>
+                    All code:
+                  </p>
+                  <h1>
+                    <a href="http://bit.ly/dwpubs2017" target="_blank">
+                      http://bit.ly/dwpubs2017
+                    </a>
+                  </h1>
+                </section>
+                <section>
+                  <h3>
+                    Method:
+                  </h3>
+                  <ul>
+                    <li>
+                      Data scraped from BITE
+                    </li>
+                    <li>
+                      OSM imported into Neo4J as shapefile
+                    </li>
+                    <li>
+                      BITE data loaded into Neo4J as CSV, then linked using queries.
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h4>
+                    Pubs near KCL?
+                  </h4>
+                </section>
+                <section data-background-image="img/pubs_near_kcl.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section data-background-image="img/kcl_pubs2.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section data-background-image="img/kcl_pubs3.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section data-background-image="img/kcl_pubs4.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section>
+                  <h4>
+                    Common Properties of Pubs?
+                  </h4>
+                </section>
+                <section data-background-image="img/football.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section data-background-image="img/music_in_common.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section data-background-image="img/locals.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+
+                <section>
+                  <h4>
+                    Pubs Renamed?
+                  </h4>
+                  <p>
+                    Making educated guesses about pubs?
+                  </p>
+                </section>
+                <section data-background-image="img/aeronaut_graph.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section data-background-image="img/aeronaut.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+
+                <section>
+                  <h4>
+                    Finding a good pub...
+                  </h4>
+                </section>
+                <section data-background-image="img/edgar_wallace.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+                <section data-background-image="img/near_kcl_wifi.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+
+                <section>
+                  <h4>
+                    Managing Highly Connected Data at Scale
+                  </h4>
+                </section>
+                <section data-background-image="img/temple_station_pubs.png" data-background-size="contain">
+                  <h3>
+                    &nbsp;
+                  </h3>
+                </section>
+              </section>
+              <section>
+                <h2>
+                  Approaching Automated External Symbol Manipulation?
+                </h2>
+              </section>
+              <section>
+                <h3>
+                  Dom Weldon
+                </h3>
+                <p>
+                  dominic.weldon@kcl.ac.uk
+                </p>
+                <p>
+                  <a href="https://twitter.com/DomWeldon">Twitter</a> / <a href="https://github.com/DomWeldon">Github</a>: @DomWeldon
+                </p>
+              </section>
+              <section data-background-image="img/temple_station_pubs.png" data-background-size="contain">
+                <h3>
+                  &nbsp;
+                </h3>
+              </section>
+            </div>
+        </div>
+        <script src="vendor/reveal.js/js/reveal.js"></script>
+        <script>
+            Reveal.initialize();
+            /*Reveal.configure({
+              keyboard: {
+                40: 'next',
+                38: 'prev'
+              }
+            });*/
+
+        </script>
+    </body>
+</html>

@@ -4,7 +4,8 @@
 
 * Thanks for inviting me - my research doesn't have an explicit focus on crowdsourcing or community participation *per se*, and I tend to have more of an interest in the mechanics of digital humanities and in particular databases.
   * This talk is somewhat at the geeky end of the discipline, but I want to be clear that I'm not just going to talk at you for twenty minutes about databases!
-  * Instead, I'm going to discuss some of the ways that we link up data in DH, and introduce what may be a new type of datastore you've not come across - graph databases - and their potential for use in future digital humanities work.
+  * Instead, I'm going to discuss some of the history and importance of linking up data in the Digital Humanities
+  * and introduce what may be a new type of datastore you've not come across - graph databases - and their potential for use in future digital humanities work.
 
 ##  The *Digital* in Digital Humanities
 
@@ -58,15 +59,10 @@ So I argue that DH as a discipline is all about using new computing technologies
 
 Conceptually, this new style of DH is quite interesting. Often, it allows us to play with data before reaching conclusions, to explore and interact with our data without having to be necessarily constrained by it to begin with. This is good for exploratory work, getting a "feel" for data, which is essential in the humanities.
 
-It also marries up very interestingly with a 1962 conceptual proposal by the aforementioned Doug Engelbart, entitled *Augmenting Human Intellect: A Conceptual Framework*. In this paper, Engelbart categorized existing human thought into 'levels' or types.
+It also marries up very interestingly with a 1962 conceptual proposal by the aforementioned Doug Engelbart, entitled *Augmenting Human Intellect: A Conceptual Framework*. In this paper, Engelbart proposed a new type of human thought that could emerge from computer use.
 
-* Concept manipulation: the fundamental ability to form thoughts;
-* Symbol manipulation: the ability to represent a concept in one's mind using a symbol;
-* External symbol manipulation: the development of systems to externalize symbol manipulation activity through the production of images which can then be shared and understood by others.
+The development of abstract thoughts through continual, iterative close collaboration with computers through a visual interface which he called: automated external symbol manipulation
 
-He then proposed a new type of thought:
-
-* The development of abstract thoughts through continual, iterative close collaboration with computers through a visual interface which he called: automated external symbol manipulation
 * This might lead, he argued, to *"concepts that we have never yet imagined*" (Engelbart, 1962, p.25)
 
 And it's exactly this kind of novel, interactive exploration of data in databases that the new style of DH is undertaking. Hopefully, I'll convince you of that with a demonstration in the second half of this talk.
@@ -160,4 +156,9 @@ This is all very good in theory, but when I was putting together this talk, I de
   * So, I scraped the data and, with a little bit of simple preprocessing put it in the graph. Then, with just two queries to combine the two datasets, I managed to combine 60% of all listings - which is reasonably good going considering pub closures, and the fact that the datasets don't align perfectly.
 
 * With this in mind, let's see what we can explore base on the db.
-  * 
+  *
+
+## Conclusions
+
+* My aim in the above wasn't to educate you about London pubs *per se*, but rather to demonstrate what's possible - with relative ease - when using new genrations of data store to link together highly complex data. Here, we can visually explore a network about a relevant topic related to human beings with ease.
+* And, as this new phase of DH technology grows, I hope that you can see how we are getting closer and closer to the kind of **enhanced symbol manipulation** that Engelbart talked about way back in 1962.
