@@ -117,30 +117,47 @@ Databases are thus becoming very important, and understanding them essential for
 
 Now, I thought I'd finish off this talk by using a geographical example, looking at **Volunteered Geographical Information**, and seeing how we can represent place in our databases, and combine this with non-place data.
 
-* In the humanities, we study human actions. 
+* In the humanities, we study human actions, and everything has to happen somewhere. So, before we can model this locational data in a database, we have to understand how we model location non-digitally.
 
-* First off, how do we understand geographical information non-digitally?
-  * Where am I? Lots of ways to answer that question.
-* Each introduces its own biases etc.
-  * Prime meridian
-  * Ordinance survey
-  * US land parcels
-* These are modeled into our system
-* How to link place and non-place data though?
-  * especially volunteered geographical information
-  * Examples of different types of place and non-place data.
-* Circles and arrows, where circles and arrows can stand for anything.
-  * Model spatial information, but in the same way as non-spatial information
-  * Use circles and arrows
-  * R-tree index
-  * Messily link to streets, etc., etc.
+* It's often revealing to look at just how many ways you can answer a simple question.
+  * **Where are we?**
+    * London
+    * Anatomy Lecture Theatre, 6th Floor Strand Building, Strand Campus, King's College London, Strand, London WC2R 2LS
+    * 51°30'41.2"N 0°06'57.5"W
+    * "Five minutes from Waterloo Bridge"
+    * Westminster
+    * The UK
+    * About 40m above sea-level
+  * All of these are valid answers, and could be found in the type of data we deal with in the humanities. However, linking these data together remains a big challenge.
+    * Each introduces its own biases etc.
+      * Prime meridian
+      * Ordinance survey
+      * US land parcels
+
+
+* But, it's once that we can still tackle using lines and circles.
+  * And in Neo4J, we can do this very easily, and so it becomes very easy to combine information about location with any other relevant information we choose, without having to worry ourselves too much with the rigid requirements of a traditional GIS.
 
 ## London Pubs Example
 
 This is all very good in theory, but when I was putting together this talk, I decided I needed an example to demonstrate the possibilities for using these kinds of database.
+  * So, I thought, summer students in London - what might be a nice example close to home that would interest you, and me, and hopefully all of us. What might we have experience of?
+  * Then it dawned on me: the pub.
 
-So, I thought, summer students in London - what might be a nice example close to home that would interest you, and me, and hopefully all of us. What might we have experience of?
+* So, to demonstrate the potential offered by graph databases, I decided to do a little experiment and combine two sources of volunteered geographical information in order to demonstrate the potential offered by these sorts of database.
+  * I found two sources of information about pubs very easily.
+    * One, of course, was the open street map, and the other was a website called [Beer in the Evening](http://www.beerintheevening.com/), which contains lots of user generated reviews of pubs, and lots of useful volunteered information, like:
+      * Does it have a pool table?
+      * Is there free wifi?
+      * Does it serve food?
+  * The only problem is, these two datasets aren't linked, and there are lots of little inconsistencies between the datasets:
+    * Is "The Lord John Russell" the same as "Lord John Russell"?
+      * If they're at the same location, yes
+    * Also, pubs shut down, but their listings may stay up. Likewise, they might change name or ownsership.
 
-Then it dawned on me: the pub.
+* How do we model this in a graph, and what can we do with it once we have it?
+  * Like I mentioned above, the aim here isn't necessarily to address an immediate research question, but more to browse and facilitate knowledge discovery in the database, and to see what we can find out about the data once it's in our DB.
+  * So, I scraped the data and, with a little bit of simple preprocessing put it in the graph. Then, with just two queries to combine the two datasets, I managed to combine 60% of all listings - which is reasonably good going considering pub closures, and the fact that the datasets don't align perfectly.
 
-Combine sources of messy volunteered geographical information to a useful end.
+* With this in mind, let's see what we can explore base on the db.
+  * 

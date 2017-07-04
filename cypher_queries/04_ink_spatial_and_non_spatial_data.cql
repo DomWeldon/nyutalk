@@ -25,12 +25,16 @@ WHERE
  	 toLower(pn.name) = toLower(pl.name)
   	// what about removing "the"?
   	OR trim(replace(toLower(pn.name), 'the', '')) = trim(replace(toLower(pl.name), 'the', ''))
+		// ye
+		OR trim(replace(toLower(pn.name), 'ye', '')) = trim(replace(toLower(pl.name), 'ye', ''))
+		// apostrophe?
+		OR replace(trim(replace(toLower(pn.name), 'the', '')), "'", '') = replace(trim(replace(toLower(pl.name), 'the', '')), "'", '')
   	// first word matches?
   	OR split(trim(replace(toLower(pl.name), 'the', '')), ' ')[0] in split(toLower(pn.name), ' ')
 	)
 MERGE (pl)-[:PUB_ON_MAP]->(pn)
 
-
+// Find pubs that might have shut.
 MATCH (pl:PubListing)
 WHERE
 	not((pl)-[:PUB_ON_MAP]->())
@@ -41,4 +45,4 @@ WHERE
 // WITH pl LIMIT 20
 CALL spatial.withinDistance('pois', { lat: pl.latitude, lon: pl.longitude }, 0.05) YIELD node AS pn
 WITH pl, pn WHERE pn:Pub
-RETURN COUNT(pl)
+MERGE (pl)-[:POSSIBLE_FORMERLY_ON_MAP]->(pn)
