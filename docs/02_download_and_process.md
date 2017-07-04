@@ -20,7 +20,6 @@ When you are
 
 For Windows users who are stuck, [see here](https://virtualenv.pypa.io/en/stable/userguide/).
 
-
 ## Scrape Data from Beer in the Evening
 
 We're now going to scrape search results from the website [Beer in the Evening](http://www.beerintheevening.com/pubs/results.shtml?l=London&show_comments=5&page=0), which is a source of user generated content about London pubs. To do this, use the following commands to change directory into `bitespider` (**B** eer **I** n **T** he **E** vening spider) and run the crawler.
