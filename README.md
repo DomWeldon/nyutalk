@@ -8,6 +8,8 @@ Some of the documentation is still in the process of being written, but feel fre
 
 Enjoy!
 
+See [Slides From Talk](bit.ly/dwprattslides).
+
 ### Contact
 
 **Email** `dominic.weldon@gmail.com`
